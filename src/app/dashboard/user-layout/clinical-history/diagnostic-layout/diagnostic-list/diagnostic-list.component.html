@@ -1,0 +1,36 @@
+<mat-card
+  ><table
+    mat-table
+    [dataSource]="diagnosticRRlist"
+    class="mat-elevation-z8 w-100"
+  >
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Prueba</th>
+      <td mat-cell *matCellDef="let diagnostic">{{ diagnostic.name }}</td>
+    </ng-container>
+    <ng-container matColumnDef="results">
+      <th mat-header-cell *matHeaderCellDef>Resultados</th>
+      <td mat-cell *matCellDef="let diagnostic">
+        {{ diagnostic.results }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="diagnosis">
+      <th mat-header-cell *matHeaderCellDef>Diagnóstico</th>
+      <td mat-cell *matCellDef="let diagnostic">
+        {{ diagnostic.diagnosis }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Acciones</th>
+      <td mat-cell *matCellDef="let diagnostic">
+        <button mat-raised-button type="button" (click)="onEdit(diagnostic)">
+          <mat-icon aria-hidden="false">edit</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedDiagnosticColumns"></tr>
+    <tr
+      mat-row
+      *matRowDef="let row; columns: displayedDiagnosticColumns"
+    ></tr></table
+></mat-card>

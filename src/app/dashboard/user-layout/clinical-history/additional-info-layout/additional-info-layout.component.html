@@ -1,0 +1,6 @@
+<app-additional-info-list *ngIf="additionalInfoRR && !isEdit" [additionalInfoRR]="additionalInfoRR"
+                          (edit)="onActions($event)"></app-additional-info-list>
+<app-additional-info-form *ngIf="!additionalInfoRR  || isEdit"
+                          [additionalInfoRR]="additionalInfoRR"
+                          (saveAdditionalInfo)="onSaveAdditionalInfo($event)"
+                          (cancel)="onActions($event)"></app-additional-info-form>

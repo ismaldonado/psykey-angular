@@ -1,0 +1,7 @@
+<mat-card *ngIf="accessInfo">
+  <mat-card-content class="d-flex justify-content-between">
+    <app-home-detail class="w-100"
+                     [accessInfo]="accessInfo"></app-home-detail>
+    <app-task-list class="w-100 ml-4"></app-task-list>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,58 @@
+<mat-card class="mt-4">
+  <mat-card-header>
+    <mat-card-title>Historia clínica</mat-card-title>
+  </mat-card-header>
+  <mat-divider></mat-divider>
+  <mat-card-content *ngIf="!clinicalHistoryResponse && !showClinicalHistory">
+    <div class="d-flex justify-content-between">
+      <p class="text-start mt-2">No existe historia clínica</p>
+    </div>
+  </mat-card-content>
+  <mat-card-actions *ngIf="!clinicalHistoryResponse && !showClinicalHistory">
+    <button mat-raised-button
+            class="mt-2"
+            type="button"
+            (click)="onCreateClinicalHistory()">
+      <mat-icon aria-hidden="false">add</mat-icon>
+    </button>
+  </mat-card-actions>
+  <mat-card-content *ngIf="clinicalHistoryResponse || showClinicalHistory">
+    <mat-tab-group>
+      <mat-tab label="Información contextual">
+        <app-additional-info-layout
+          [additionalInfoRR]="clinicalHistoryResponse?.additionalInfoRR"
+          (saveAdditionalInfo)="saveAdditionalInfo($event)"
+          (actions)="changeShowClinicalHistory($event)"
+        ></app-additional-info-layout>
+      </mat-tab>
+      <mat-tab label="Fármacos" *ngIf="clinicalHistoryResponse">
+        <app-medicine-layout
+          [medicineRRList]="medicineRRList"
+          (saveMedicine)="saveMedicine($event)"
+          (actions)="changeShowClinicalHistory($event)"
+        ></app-medicine-layout>
+      </mat-tab>
+      <mat-tab label="Pruebas/Diagnósticos" *ngIf="clinicalHistoryResponse">
+        <app-diagnostic-layout
+          [diagnosticRRList]="diagnosticRRList"
+          (saveDiagnostic)="saveDiagnostic($event)"
+          (actions)="changeShowClinicalHistory($event)"
+        ></app-diagnostic-layout>
+      </mat-tab>
+      <mat-tab label="Pautas/Tratamientos" *ngIf="clinicalHistoryResponse">
+        <app-treatment-layout
+          [treatmentRRList]="treatmentRRList"
+          (saveTreatment)="saveTreatment($event)"
+          (actions)="changeShowClinicalHistory($event)"
+        ></app-treatment-layout>
+      </mat-tab>
+      <mat-tab label="Informes" *ngIf="clinicalHistoryResponse">
+        <app-report-layout
+          [reportRRList]="reportRRList"
+          (saveReport)="saveReport($event)"
+          (actions)="changeShowClinicalHistory($event)"
+        ></app-report-layout>
+      </mat-tab>
+    </mat-tab-group>
+  </mat-card-content>
+</mat-card>

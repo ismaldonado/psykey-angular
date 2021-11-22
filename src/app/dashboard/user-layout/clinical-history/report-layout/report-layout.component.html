@@ -1,0 +1,21 @@
+<app-report-list
+  *ngIf="!isEdit && reportRRList?.length"
+  [reportRRList]="reportRRList"
+  (reportToUpdate)="onEdit($event)"
+></app-report-list>
+<app-report-form
+  *ngIf="isEdit"
+  [report]="reportToUpdate"
+  (saveReport)="onSaveReport($event)"
+  (cancel)="changeIsEdit($event)"
+></app-report-form>
+<button
+  *ngIf="!isEdit"
+  mat-raised-button
+  type="button"
+  aria-label="add"
+  class="mt-4"
+  (click)="changeIsEdit(true)"
+>
+<mat-icon aria-hidden="false" >add</mat-icon>
+</button>

@@ -1,0 +1,99 @@
+<form [formGroup]="userForm">
+  <mat-card class="mt-4">
+    <mat-card-header>
+      <mat-card-title>Alta {{ userTypeMap.get(userType) }}</mat-card-title>
+    </mat-card-header>
+    <mat-divider></mat-divider>
+    <mat-card-content class="mt-4">
+      <div class="d-flex">
+        <mat-form-field class="mx-2 w-100" appearance="outline">
+          <mat-label>Nombre</mat-label>
+          <input formControlName="name" matInput/>
+        </mat-form-field>
+        <mat-form-field class="mx-2 w-100" appearance="outline">
+          <mat-label>Apellidos</mat-label>
+          <input formControlName="surname" matInput/>
+        </mat-form-field>
+        <mat-form-field class="mx-2 w-100" appearance="outline">
+          <mat-label>Fecha de nacimiento</mat-label>
+          <input matInput
+                 formControlName="birthdate"
+                 [matDatepicker]="birthdate"/>
+          <mat-datepicker-toggle matSuffix [for]="birthdate">
+            <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+          </mat-datepicker-toggle>
+          <mat-datepicker #birthdate></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field class="mx-2 w-100" appearance="outline">
+          <mat-label>DNI</mat-label>
+          <input matInput formControlName="dni" #dni maxlength="9"/>
+          <mat-hint align="end">{{ dni.value.length }} / 9</mat-hint>
+        </mat-form-field>
+      </div>
+      <div class="d-flex">
+        <mat-form-field class="mx-2 w-100" appearance="outline">
+          <mat-label>Teléfono</mat-label>
+          <input formControlName="phone" matInput/>
+        </mat-form-field>
+        <mat-form-field class="mx-2 w-100" appearance="outline">
+          <mat-label>Ciudad</mat-label>
+          <input matInput formControlName="city"/>
+        </mat-form-field>
+        <mat-form-field class="mx-2 w-100" appearance="outline">
+          <mat-label>Provincia</mat-label>
+          <input matInput formControlName="province"/>
+        </mat-form-field>
+        <mat-form-field class="mx-2 w-100" appearance="outline">
+          <mat-label>Código postal</mat-label>
+          <input matInput
+                 formControlName="postalCode"
+                 #postalCode
+                 maxlength="5"/>
+          <mat-hint align="end">{{ postalCode.value.length }} / 5</mat-hint>
+        </mat-form-field>
+      </div>
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Dirección</mat-label>
+        <textarea matInput formControlName="address"></textarea>
+      </mat-form-field>
+      <div class="d-flex" *ngIf="userType !== 'secretary'">
+        <mat-form-field appearance="outline" class="mx-2">
+          <mat-select formControlName="therapyType" placeholder="Terapia">
+            <mat-option></mat-option>
+            <mat-option *ngFor="let type of therapyTypeList"
+                        value="{{ type.value }}">
+              {{ type.description }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <ng-container *ngIf="therapistResponseList && userType === 'patient'">
+          <mat-form-field appearance="outline" class="mx-2">
+            <mat-select formControlName="therapist" placeholder="Terapueta">
+              <mat-option></mat-option>
+              <mat-option *ngFor="let therapist of therapistResponseList"
+                          value="{{ therapist.id }}">
+                {{ therapist.employeeFullName }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </ng-container>
+      </div>
+      <section class="user-section" *ngIf="userType === 'patient'">
+        <mat-checkbox class="user-margin"
+                      formControlName="checked"
+                      (click)="onChecked()">
+          El paciente no es el cliente
+        </mat-checkbox>
+      </section>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card *ngIf="userType === 'patient'" class="mt-4">
+    <mat-card-content>
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Motivo de consulta</mat-label>
+        <textarea matInput formControlName="reason"></textarea>
+      </mat-form-field>
+    </mat-card-content>
+  </mat-card>
+</form>

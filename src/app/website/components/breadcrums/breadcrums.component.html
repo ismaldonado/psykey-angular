@@ -1,0 +1,17 @@
+<div class="ex-basic-1">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="breadcrumbs">
+          <a routerLink="/inicio">Psykey</a>
+          <fa-icon [icon]="angleDoubleRight"></fa-icon>
+          <ng-container *ngIf="section">
+            <a routerLink="/inicio" fragment="{{ section }}">Servicios</a>
+            <fa-icon [icon]="angleDoubleRight"></fa-icon>
+          </ng-container>
+          <span>{{ text }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

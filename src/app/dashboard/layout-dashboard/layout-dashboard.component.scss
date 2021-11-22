@@ -1,0 +1,27 @@
+.l-main {
+  display: flex;
+  overflow-x: hidden;
+  background: rgb(238, 234, 234);
+
+  &__aside {
+    z-index: 1;
+  }
+  &__content {
+    min-height: 100vh;
+    transition: 0.6s transform, 0.6s width;
+    padding: 32px;
+    @media (min-width: 768px) {
+      transform: translateX(230px);
+      width: calc(100% - 230px);
+    }
+    @media (max-width: 767px) {
+      transform: translateX(70px);
+      width: calc(100% - 70px);
+      padding: 16px;
+    }
+    &.l-main__content--sidebar-collapsed {
+      transform: translateX(70px);
+      width: calc(100% - 70px);
+    }
+  }
+}

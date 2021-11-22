@@ -1,0 +1,56 @@
+<mat-card>
+  <mat-card-header
+    ><mat-card-title>Nuevo Tratamiento</mat-card-title></mat-card-header
+  >
+  <mat-divider></mat-divider>
+  <form [formGroup]="treatmentForm" (ngSubmit)="onSubmit()">
+    <mat-card-content>
+      <div class="d-flex ">
+        <mat-form-field appearance="outline">
+          <mat-label>Fecha de inicio </mat-label>
+          <input
+            matInput
+            formControlName="startDate"
+            [matDatepicker]="startDate"
+          />
+          <mat-datepicker-toggle matSuffix [for]="startDate">
+            <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+          </mat-datepicker-toggle>
+          <mat-datepicker #startDate></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Fecha de finalización: </mat-label>
+          <input matInput formControlName="endDate" [matDatepicker]="endDate" />
+          <mat-datepicker-toggle matSuffix [for]="endDate">
+            <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+          </mat-datepicker-toggle>
+          <mat-datepicker #endDate></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field  appearance="outline">
+          <mat-label>Nombre:</mat-label>
+          <input matInput formControlName="title" />
+        </mat-form-field>
+      </div>
+      <mat-form-field class="width" appearance="outline">
+        <mat-label>Descripción:</mat-label>
+        <textarea
+          matInput
+          formControlName="description"
+          rows="10"
+          class="width"
+        ></textarea>
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button type="submit" class="accept"><mat-icon aria-hidden="false" >check</mat-icon></button>
+      <button
+        mat-raised-button
+        type="submit"
+        class="cancel"
+        (click)="onCancel()"
+      >
+      <mat-icon aria-hidden="false" >clear</mat-icon>
+      </button>
+    </mat-card-actions>
+  </form>
+</mat-card>

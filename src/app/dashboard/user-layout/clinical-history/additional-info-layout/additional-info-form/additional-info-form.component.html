@@ -1,0 +1,32 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Información contextual del paciente</mat-card-title>
+  </mat-card-header>
+  <mat-divider></mat-divider>
+  <form [formGroup]="additionalInfoForm" (ngSubmit)="onSubmit()" class="mt-4">
+    <mat-card-content>
+      <div class="d-flex flex-column">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Información relaciones sociales:</mat-label>
+          <textarea matInput formControlName="socialInfo"></textarea>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Información laboral:</mat-label>
+          <textarea matInput formControlName="employmentInfo"></textarea>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Información familiar:</mat-label>
+          <textarea matInput formControlName="familyInfo"></textarea>
+        </mat-form-field>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button class="accept" type="submit" [disabled]="!additionalInfoForm.valid">
+        <mat-icon aria-hidden="false" >check</mat-icon>
+      </button>
+      <button mat-raised-button class="cancel " type="button" (click)="onCancel()">
+        <mat-icon aria-hidden="false" >clear</mat-icon>
+      </button>
+    </mat-card-actions>
+  </form>
+</mat-card>

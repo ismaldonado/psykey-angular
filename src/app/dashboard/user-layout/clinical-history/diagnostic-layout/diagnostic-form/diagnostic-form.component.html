@@ -1,0 +1,44 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Nuevo Diagnóstico</mat-card-title>
+  </mat-card-header>
+  <mat-divider></mat-divider>
+  <form [formGroup]="diagnosticForm" (ngSubmit)="onSubmit()">
+    <mat-card-content>
+      <div class="d-flex">
+      <mat-form-field appearance="outline" class="mx-2 w-100" >
+        <mat-label>Nombre: </mat-label>
+        <input formControlName="name" matInput />
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="mx-2 w-100">
+        <mat-label>Resultados: </mat-label>
+        <input formControlName="results" matInput />
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="mx-2 w-100">
+        <mat-label>Diagnóstico:</mat-label>
+        <input formControlName="diagnosis" matInput />
+      </mat-form-field>
+    </div>
+    </mat-card-content>
+    
+    <mat-card-actions>
+      <button
+        mat-raised-button
+        type="submit"
+        class="accept"
+        [disabled]="!diagnosticForm.valid"
+      >
+      <mat-icon aria-hidden="false">check</mat-icon>
+      </button>
+      <button
+        mat-raised-button
+        color="cancel"
+        class="cancel"
+        type="button"
+        (click)="onCancel()"
+      >
+      <mat-icon aria-hidden="false">clear</mat-icon>
+      </button>
+    </mat-card-actions>
+  </form>
+</mat-card>

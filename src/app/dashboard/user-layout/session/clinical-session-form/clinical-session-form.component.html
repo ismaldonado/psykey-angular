@@ -1,0 +1,33 @@
+<form [formGroup]="clinicalSessionForm" class="mt-4">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Nueva Sesión</mat-card-title>
+    </mat-card-header>
+    <form [formGroup]="clinicalSessionForm" (ngSubmit)="onSubmit()">
+      <mat-card-content>
+        <div class="d-flex justify-content-left">
+          <mat-form-field appearance="outline" class="mx-2 w-100">
+            <mat-label>Sesión</mat-label>
+            <input [readonly]="true" formControlName="name" matInput/>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="mx-2 w-100">
+            <mat-label>Fecha de sesión</mat-label>
+            <input [readonly]="true" matInput formControlName="date" [matDatepicker]="date"/>
+            <mat-datepicker-toggle [disabled]="true" matSuffix [for]="date">
+              <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+            </mat-datepicker-toggle>
+            <mat-datepicker #date></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <mat-form-field appearance="outline" class="mx-2 w-100">
+          <mat-label>Descripción:</mat-label>
+          <textarea matInput formControlName="description" rows="30" ></textarea>
+        </mat-form-field>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button class="accept" type="submit" [disabled]="!clinicalSessionForm.valid"><mat-icon aria-hidden="false" >check</mat-icon></button>
+        <button mat-raised-button class="cancel" type="button" (click)="onCancel()"><mat-icon aria-hidden="false" >clear</mat-icon></button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</form>

@@ -1,0 +1,48 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Búsqueda de usuario</mat-card-title>
+  </mat-card-header>
+<mat-divider></mat-divider>
+  <form [formGroup]="searchForm" (ngSubmit)="onSearch()">
+    <mat-card-content class="d-flex mt-4">
+      <mat-form-field appearance="outline" class="mx-2 w-100">
+        <mat-label>DNI</mat-label>
+        <input matInput formControlName="dni" maxlength="9" placeholder="DNI">
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="mx-2 w-100">
+        <mat-label>Nombre</mat-label>
+        <input matInput formControlName="name" placeholder="Nombre"/>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="mx-2 w-100">
+        <mat-label>Apellidos</mat-label>
+        <input matInput formControlName="surname" placeholder="Apellidos"/>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="mx-2 w-100">
+        <mat-select formControlName="therapyType" placeholder="Terapia">
+          <mat-option></mat-option>
+          <mat-option *ngFor="let type of therapyTypesList" value="{{ type.value }}">
+            {{ type.description }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="mx-2 w-100">
+        <mat-select formControlName="userType" placeholder="Tipo de usuario">
+          <mat-option></mat-option>
+          <mat-option *ngFor="let type of userTypeList" value="{{ type.value }}">
+            {{ type.description }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-actions class="d-flex justify-content-center">
+      <button type="button" mat-raised-button 
+              (click)="onClean()">
+              <mat-icon aria-hidden="false" >clear_all</mat-icon>
+      </button>
+      <button type="submit" mat-raised-button 
+              [disabled]="!searchForm.valid">
+              <mat-icon aria-hidden="false" >search</mat-icon>
+      </button>
+    </mat-card-actions>
+  </form>
+</mat-card>

@@ -1,0 +1,14 @@
+table {
+  width: 100%;
+}
+
+button {
+  background-color: #242e42;
+  color: white;
+}
+
+button:hover {
+  background-color: #7889a4;
+  color: white;
+}
+

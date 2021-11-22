@@ -1,0 +1,21 @@
+<app-medicine-list
+  *ngIf="medicineRRList?.length && !isEdit"
+  [medicineRRList]="medicineRRList"
+  (medicineToUpdate)="onEdit($event)"
+></app-medicine-list>
+<app-medicine-form
+  *ngIf="isEdit"
+  [medicine]="medicineToUpdate"
+  (saveMedicineRR)="onSaveMedicine($event)"
+  (cancel)="changeIsEdit($event)"
+></app-medicine-form>
+<button
+  *ngIf="!isEdit"
+  mat-raised-button
+  type="button"
+  aria-label="añadir"
+  class="mt-4"
+  (click)="changeIsEdit(true)"
+>
+<mat-icon aria-hidden="false" >add</mat-icon>
+</button>

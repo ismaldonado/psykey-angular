@@ -1,0 +1,37 @@
+<mat-card class="mt-4">
+  <mat-card-header>
+    <mat-card-title>Sesiones</mat-card-title>
+  </mat-card-header>
+  <mat-divider></mat-divider>
+  <mat-card-content *ngIf="clinicalSessionResponseList">
+    <app-clinical-session-form
+      *ngIf="isEdit"
+      [clinicalSessionToUpdate]="clinicalSessionToUpdate"
+      [numberOfSession]="numberOfSession"
+      (saveClinicalSession)="onCreate($event)"
+      (cancel)="onCancel()"
+    ></app-clinical-session-form>
+    <app-clinical-session-list
+      *ngIf="clinicalSessionResponseList?.length > 0 && !isEdit"
+      [clinicalSessionResponseList]="clinicalSessionResponseList"
+      (editClinicalSession)="onEdit($event)"
+      (createClinicalSession)="changeIsEdit(true)"
+    ></app-clinical-session-list>
+
+    <ng-container *ngIf="clinicalSessionResponseList?.length === 0 && !isEdit">
+      <div class="d-flex justify-content-between">
+        <p class="text-start mt-2">No existen sesiones clínicas</p>
+      </div>
+    </ng-container>
+  </mat-card-content>
+  <mat-card-actions *ngIf="!isEdit">
+    <button
+      mat-raised-button
+      class="mt-2"
+      type="button"
+      (click)="addClinicalSession()"
+    >
+      <mat-icon aria-hidden="false">add</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>

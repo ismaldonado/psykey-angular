@@ -1,0 +1,19 @@
+:host ::ng-deep .carousel-control-prev {
+  left: -86px;
+}
+
+:host ::ng-deep .carousel-control-next {
+  right: -86px;
+}
+
+.btn-contact {
+  background-color: #153E52;
+  color: white;
+  text-decoration: none;
+}
+
+.btn-contact:hover {
+  background-color: #4E7FA8;
+  color: white;
+  border: 1px solid #153E52;
+}

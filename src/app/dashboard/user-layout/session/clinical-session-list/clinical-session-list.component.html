@@ -1,0 +1,13 @@
+<mat-accordion *ngFor="let session of clinicalSessionResponseList">
+  <mat-expansion-panel (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>Sessión: {{session.name}}</mat-panel-title>
+      <mat-panel-description>
+        <mat-label>Fecha de sesión: {{ session.date | date: "dd/MM/yy" }}</mat-label>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <p class="w-100 text-justify">{{session.description}}</p>
+    <button mat-raised-button  type="button" (click)="editSession(session)"><mat-icon aria-hidden="false">edit</mat-icon></button>
+  </mat-expansion-panel>
+</mat-accordion>

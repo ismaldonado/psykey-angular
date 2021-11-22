@@ -1,0 +1,28 @@
+<div class="page-header"
+     [ngClass]="{ 'page-header-collapsed': isCollapsed }">
+  <nav>
+    <a href="#0" aria-label="forecastr logo" class="logo">
+      <!-- METER LOGO -->
+    </a>
+    <div class="admin-menu">
+      <div class="menu-heading">
+        <h3>Administración</h3>
+      </div>
+      <button mat-icon-button type="button" aria-label="Exampl" class="item w-100"
+              *ngFor="let item of menuItems" (click)="onNavigate(item.path)">
+        <mat-icon>{{item.icon}}</mat-icon>
+        {{ item.name }}
+      </button>
+      <button mat-icon-button type="button" class="item w-100"
+              (click)="goWeb()">
+        <mat-icon>keyboard_return</mat-icon>
+        Volver a la web
+      </button>
+      <button mat-icon-button type="button" class="item w-100 out"
+              (click)="logout()">
+        <mat-icon>logout</mat-icon>
+        Cerrar sesión
+      </button>
+    </div>
+  </nav>
+</div>

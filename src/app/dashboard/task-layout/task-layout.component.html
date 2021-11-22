@@ -1,0 +1,27 @@
+<mat-card>
+  <form [formGroup]="taskForm">
+    <mat-card-content>
+      <mat-form-field appearance="outline" class="w-50">
+        <mat-label>Nueva tarea</mat-label>
+        <input matInput formControlName="description"/>
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button type="button" class="ml-2"><mat-icon aria-hidden="false" >add</mat-icon></button>
+    </mat-card-actions>
+  </form>
+</mat-card>
+<mat-card class="mt-4">
+  <mat-card-header>
+    <mat-card-title>Todas las tareas</mat-card-title>
+  </mat-card-header>
+<mat-divider></mat-divider>
+  <mat-card-content>
+    <mat-selection-list #task>
+      <mat-list-option *ngFor="let task of taskList" [selected]="task.done">
+        {{ task.description }}
+      </mat-list-option>
+    </mat-selection-list>
+  </mat-card-content>
+  <p>Tareas completadas: {{ task.selectedOptions.selected.length }}</p>
+</mat-card>

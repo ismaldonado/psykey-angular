@@ -1,0 +1,71 @@
+<nav class="navbar navbar-expand-md navbar-dark navbar-custom fixed-top">
+  <a class="navbar-brand logo-text page-scroll" routerLink="/inicio">Psykey</a>
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link page-scroll" routerLink="/inicio" fragment="header"
+          >Inicio<span class="sr-only">(current)</span></a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link page-scroll" routerLink="/inicio" fragment="services"
+          >Servicios</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link page-scroll" routerLink="/inicio" fragment="center"
+          >Centro</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link page-scroll" routerLink="/inicio" fragment="team"
+          >Equipo</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link page-scroll"
+          routerLink="/inicio"
+          fragment="testimonials"
+          >Opiniones</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link page-scroll" routerLink="/inicio" fragment="contact"
+          >Contacto</a
+        >
+      </li>
+      <li class="nav-item dropdown">
+        <a
+          class="nav-link dropdown-toggle page-scroll"
+          id="navbarDropdown"
+          role="button"
+          aria-haspopup="true"
+          aria-expanded="false"
+          >Más</a
+        >
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" routerLink="/terminos-condiciones">
+            <span class="item-text">Términos y condiciones</span>
+          </a>
+          <div class="dropdown-items-divide-hr"></div>
+          <a class="dropdown-item" routerLink="/politica-privacidad">
+            <span class="item-text">Política de privacidad</span>
+          </a>
+          <div class="dropdown-items-divide-hr"></div>
+          <a class="dropdown-item" routerLink="/aviso-legal">
+            <span class="item-text">Aviso Legal</span>
+          </a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link page-scroll"
+          routerLink="#"
+          (click)="goDashboard($event)"
+          >{{ apiText }}</a
+        >
+      </li>
+    </ul>
+  </div>
+</nav>

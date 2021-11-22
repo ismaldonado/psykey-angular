@@ -1,0 +1,34 @@
+<mat-card>
+  <table mat-table [dataSource]="medicineRRList" class="mat-elevation-z8 w-100">
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Nombre del fármaco</th>
+      <td mat-cell *matCellDef="let medicine">{{ medicine.name }}</td>
+    </ng-container>
+    <ng-container matColumnDef="dose">
+      <th mat-header-cell *matHeaderCellDef>Dosis</th>
+      <td mat-cell *matCellDef="let medicine">{{ medicine.dose }}</td>
+    </ng-container>
+    <ng-container matColumnDef="startDate">
+      <th mat-header-cell *matHeaderCellDef>Fecha de inicio</th>
+      <td mat-cell *matCellDef="let medicine">{{ medicine.startDate | date: "dd/MM/yy"}}</td>
+    </ng-container>
+    <ng-container matColumnDef="endDate">
+      <th mat-header-cell *matHeaderCellDef>Fecha de fin</th>
+      <td mat-cell *matCellDef="let medicine">{{ medicine.endDate | date: "dd/MM/yy"}}</td>
+    </ng-container>
+    <ng-container matColumnDef="comments">
+      <th mat-header-cell *matHeaderCellDef>Observaciones</th>
+      <td mat-cell *matCellDef="let medicine">{{ medicine.comments }}</td>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Acciones</th>
+      <td mat-cell *matCellDef="let medicine">
+        <button mat-raised-button type="button" (click)="onEdit(medicine)">
+          <mat-icon aria-hidden="false">edit</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedMedicineColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedMedicineColumns"></tr>
+  </table>
+</mat-card>

@@ -1,0 +1,84 @@
+.page-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: auto;
+  padding-top: 20px;
+  width: 220px;
+  color: white;
+  background: #242e42;
+  z-index: 2;
+}
+
+.page-header nav {
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100% - 90px);
+}
+
+.page-header .logo {
+}
+
+.page-header .toggle-mob-menu {
+  display: none;
+  margin-left: 5px;
+  padding: 4px;
+  background: white;
+  border-radius: 4px;
+}
+
+.page-header .admin-menu {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  margin-top: 35px;
+  width: 220px;
+  list-style: none;
+}
+
+.page-header .admin-menu button {
+  background: #242e42;
+  display: flex;
+  padding-left: 1.5rem;
+  border-left: none;
+  border-top: 1px solid #7889a4;
+  border-bottom: 1px solid #7889a4;
+}
+
+.page-header .admin-menu .item {
+  border-radius: 0;
+  p {
+    color: white;
+    font-weight: bold;
+    padding-top: 0.6rem;
+  }
+}
+
+.page-header .admin-menu .item:hover {
+  background: #7889a4;
+}
+
+.page-header .admin-menu fa-icon {
+  width: 20px;
+  height: 20px;
+  color: white;
+  margin-right: 10px;
+  padding-top: 0.6rem;
+}
+
+.page-header .admin-menu .menu-heading h3 {
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 0.15em;
+  font-size: 0.9rem;
+  margin-top: 12px;
+  text-align: center;
+  color: #7889a4;
+}
+
+.out:hover {
+  background-color: rgb(170, 57, 57) !important;
+  color: white;
+}

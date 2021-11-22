@@ -1,0 +1,45 @@
+<mat-card *ngIf="!userToModify">
+  <mat-card-header>
+    <mat-card-title>Alta nuevos usuarios</mat-card-title>
+  </mat-card-header>
+  <mat-divider></mat-divider>
+  <mat-card-content class="mt-4">
+    <mat-form-field appearance="outline">
+      <mat-label>Nuevo usuario tipo:</mat-label>
+      <mat-select [(value)]="userTypeSelected">
+        <mat-option *ngFor="let type of usersTypeList" value="{{ type.value }}">
+          {{ type.description }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </mat-card-content>
+</mat-card>
+
+<form *ngIf="userTypeSelected" [formGroup]="userForm" (ngSubmit)="onCreate()">
+  <app-user-form formGroupName="user"
+                 [userType]="userTypeSelected"
+                 [therapistResponseList]="therapistResponseList"
+                 (checkedEvent)="onChecked($event)"
+                 (therapyTypeSelected)="onShowTherapistList($event)"></app-user-form>
+  <!--esto lo quiero entender-->
+  <!-- Esta comprobación doble la realizamos por si el usuario primero
+      pincha en paciente y pone el checkbox a true y luego pulsa en empleado,
+      de esta manera se comprueba que solo se pinte el componente si es paciente -->
+  <app-client-form formGroupName="client"
+                   *ngIf="userTypeSelected === 'patient' && checked">
+  </app-client-form>
+  <div class="mt-4">
+    <button mat-raised-button
+            type="submit"
+            class="mx-2 accept"
+            [disabled]="!userForm.valid">
+            <mat-icon aria-hidden="false" >check</mat-icon>
+    </button>
+    <button mat-raised-button
+            type="button"
+            class="mx-2 cancel"
+            (click)="onCancel()">
+            <mat-icon aria-hidden="false" >clear</mat-icon>
+    </button>
+  </div>
+</form>

@@ -1,0 +1,2 @@
+<app-search-form (searchRequest)="onSearch($event)"></app-search-form>
+<app-results *ngIf="!showLoading && userResponseList" [userResponseList]="userResponseList"></app-results>

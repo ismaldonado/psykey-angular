@@ -1,0 +1,81 @@
+<mat-card *ngIf="userDetail">
+  <mat-card-header class="d-flex flex-column">
+    <mat-card-title class="d-flex justify-content-between align-items-center">
+      Detalle de usuario
+      <button *ngIf="isEditable" type="button" mat-raised-button
+              class="my-0" (click)="onEdit()">
+              <mat-icon aria-hidden="false" >edit</mat-icon>
+      </button>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-divider></mat-divider>
+  <mat-card-content>
+    <table>
+      <tr>
+        <td class="bold">Tipo de usuario:</td>
+        <td class="bold" *ngIf="userDetail.userType!=='secretary'">Tipo de Terapia:</td>
+        <td class="bold">Nombre:</td>
+        <td class="bold">Apellidos:</td>
+        <td class="bold">Fecha de nacimiento:</td>
+        <td class="bold">DNI:</td>
+      </tr>
+      <tr>
+        <td>{{ userTypeMap.get(userDetail.userType) }}</td>
+        <td *ngIf="userDetail.therapyType">{{ therapyTypeMap.get(userDetail.therapyType) }}</td>
+        <td>{{ userDetail.name }}</td>
+        <td>{{ userDetail.surname }}</td>
+        <td>{{ userDetail.birthdate | date: "dd MMM yy" }}</td>
+        <td>{{ userDetail.dni }}</td>
+      </tr>
+      <tr>
+        <td class="bold">Teléfono:</td>
+        <td class="bold">Dirección:</td>
+        <td class="bold">Ciudad:</td>
+        <td class="bold">Provincia:</td>
+        <td class="bold">Código Postal:</td>
+        <td class="bold" *ngIf="userDetail.userType==='patient'">Motivo de consulta:</td>
+      </tr>
+      <tr>
+        <td>{{ userDetail.phone }}</td>
+        <td>{{ userDetail.address }}</td>
+        <td>{{ userDetail.city }}</td>
+        <td>{{ userDetail.province }}</td>
+        <td>{{ userDetail.postalCode }}</td>
+        <td *ngIf="userDetail.userType==='patient'">{{ userDetail.reason }}</td>
+      </tr>
+    </table>
+  </mat-card-content>
+</mat-card>
+<mat-card *ngIf="userDetail?.client as client" class="mt-4">
+  <mat-card-title>Detalle de Cliente</mat-card-title>
+  <mat-card-content>
+    <table>
+      <tr>
+        <td class="bold">Nombre:</td>
+        <td class="bold">Apellidos:</td>
+        <td class="bold">DNI:</td>
+        <td class="bold">Teléfono:</td>
+        <td class="bold">Dirección:</td>
+      </tr>
+      <tr>
+        <td>{{ client.name }}</td>
+        <td>{{ client.surname }}</td>
+        <td>{{ client.dni }}</td>
+        <td>{{ client.phone }}</td>
+        <td>{{ client.address }}</td>
+      </tr>
+      <tr>
+        <td class="bold">Ciudad:</td>
+        <td class="bold">Provincia:</td>
+        <td class="bold">Código Postal:</td>
+        <td class="bold">Relación con el paciente:</td>
+      </tr>
+      <tr>
+        <td>{{ client.city }}</td>
+        <td>{{ client.province }}</td>
+        <td>{{ client.postalCode }}</td>
+        <td>{{ client.patientRelationship }}</td>
+      </tr>
+    </table>
+  </mat-card-content>
+</mat-card>

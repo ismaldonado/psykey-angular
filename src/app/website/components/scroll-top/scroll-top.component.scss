@@ -1,0 +1,30 @@
+.scroll-to-top {
+  position: fixed;
+  z-index: 999;
+  bottom: 15px;
+  right: 15px;
+  opacity: 0;
+  transition: all .2s ease-in-out;
+  border-radius: 1.875rem;
+  background: #4e7fa8 url("~src/assets/img/up-arrow.png") no-repeat center 47%;
+  background-size: 1.125rem 1.125rem;
+  width: 2.625rem;
+  height: 2.625rem;
+}
+
+.show-scrollTop {
+  opacity: 1;
+  transition: all .2s ease-in-out;
+}
+
+:hover.scroll-to-top {
+  background-color: #153E52;
+}
+
+button {
+  display: none;
+}
+
+.button-show {
+  display: block;
+}

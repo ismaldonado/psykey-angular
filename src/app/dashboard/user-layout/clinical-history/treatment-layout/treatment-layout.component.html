@@ -1,0 +1,17 @@
+<app-treatment-list *ngIf="treatmentRRList?.length && !isEdit"
+                    [treatmentRRList]="treatmentRRList"
+                    (treatmentToUpdate)="onEdit($event)"></app-treatment-list>
+<app-treatment-form *ngIf="isEdit"
+                    [treatment]="treatmentToUpdate"
+                    (saveTreatment)="onSaveTreatment($event)"
+                    (cancel)="changeIsEdit($event)"></app-treatment-form>
+<button
+  *ngIf="!isEdit"
+  mat-raised-button
+  type="button"
+  aria-label="add"
+  class="mt-4"
+  (click)="changeIsEdit(true)"
+>
+  <mat-icon aria-hidden="false">add</mat-icon>
+</button>
