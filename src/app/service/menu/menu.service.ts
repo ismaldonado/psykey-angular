@@ -43,7 +43,7 @@ export class MenuService {
   constructor(private readonly sessionStorageService: SessionStorageService) {}
 
   loadMenu(): void {
-    this.sessionStorageService.select('accessInfo', null)
+    this.sessionStorageService.select('accessInfo')
       .pipe(filter((accessInfo: AccessInfo) => accessInfo?.permissions.length > 0))
       .subscribe((accessInfo: AccessInfo) => {
         this.setMenuItems(accessInfo.permissions);
