@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { LayoutDashboardComponent } from './layout-dashboard/layout-dashboard.component';
 import { MatButtonModule } from '@angular/material/button';
@@ -55,6 +55,7 @@ import { HomeLayoutComponent } from './home-layout/home-layout.component';
 import { HomeDetailComponent } from './home-layout/home-detail/home-detail.component';
 import { TaskListComponent } from './home-layout/task-list/task-list.component';
 import { TaskLayoutComponent } from './task-layout/task-layout.component';
+
 
 @NgModule({
   declarations: [
@@ -119,7 +120,8 @@ import { TaskLayoutComponent } from './task-layout/task-layout.component';
     MatExpansionModule
   ],
   providers: [
-    { provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: { useUtc: false } }
+    { provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: { useUtc: false } },
+    DatePipe
   ]
 })
 export class DashboardModule {

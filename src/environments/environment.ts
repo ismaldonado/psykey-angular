@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  basePath: 'http://localhost:8080'
+  basePath: 'http://psykey-env.eba-9dp4jnbf.eu-west-3.elasticbeanstalk.com'
 };
 
 /*

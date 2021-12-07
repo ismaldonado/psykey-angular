@@ -1,19 +1,23 @@
-<button type="button" mat-raised-button
-        class="mb-4"
-        (click)="onGoBack()">
-        <mat-icon aria-hidden="false" aria-label="Example home icon">arrow_back</mat-icon>
+<button type="button" mat-raised-button class="mb-4" (click)="onGoBack()">
+  <mat-icon aria-hidden="false">arrow_back</mat-icon>
 </button>
 <ng-container *ngIf="userDetail">
-  <app-user-detail [userDetail]="userDetail"
-                   [isEditable]="isEditable"
-                   (edit)="onEdit()"></app-user-detail>
-  <app-clinical-session *ngIf="userDetail.employeeUsername === userLogged"
-                        [clinicalSessionResponseList]="clinicalSessionResponseList"
-                        [userId]="userDetail.id"
-                        [employeeId]="userDetail.employeeId"
-                        (saveClinicalSession)="onSaveClinicalSession($event)"></app-clinical-session>
-  <app-clinical-history *ngIf="userDetail.employeeUsername === userLogged"
-                        [userDetailResponse]="userDetail"
-                        [showClinicalHistory]="showClinicalHistory"
-                        (updateUserDetail)="onUpdateUserDetail($event)"></app-clinical-history>
+  <app-user-detail
+    [userDetail]="userDetail"
+    [isEditable]="isEditable"
+    (edit)="onEdit()"
+  ></app-user-detail>
+  <app-clinical-session
+    *ngIf="userDetail.employeeUsername === userLogged"
+    [clinicalSessionResponseList]="clinicalSessionResponseList"
+    [userId]="userDetail.id"
+    [employeeId]="userDetail.employeeId"
+    (saveClinicalSession)="onSaveClinicalSession($event)"
+  ></app-clinical-session>
+  <app-clinical-history
+    *ngIf="userDetail.employeeUsername === userLogged"
+    [userDetailResponse]="userDetail"
+    [showClinicalHistory]="showClinicalHistory"
+    (updateUserDetail)="onUpdateUserDetail($event)"
+  ></app-clinical-history>
 </ng-container>

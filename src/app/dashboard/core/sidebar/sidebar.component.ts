@@ -5,6 +5,7 @@ import { MenuService } from '../../../service/menu/menu.service';
 import { LoginService } from '../../../service/login/login.service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { AlertService } from 'src/app/service/alert/alert.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -18,6 +19,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
 
   constructor(private readonly router: Router,
               private readonly menuService: MenuService,
+              private readonly alertService: AlertService,
               private readonly loginService: LoginService) {}
 
   ngOnInit(): void {
@@ -30,7 +32,11 @@ export class SidebarComponent implements OnInit, OnDestroy {
   }
 
   onNavigate(itemPath: string): void {
-    this.router.navigate([itemPath]).then();
+    if(itemPath === "/dashboard/task") {
+      this.alertService.openSnackBar('Actualmente en construcción')
+    } else {
+      this.router.navigate([itemPath]).then();
+    }
   }
 
   logout(): void {

@@ -11,8 +11,6 @@ import { filter, takeUntil } from 'rxjs/operators';
   styleUrls: ['./searcher.component.scss']
 })
 export class SearcherComponent implements OnInit, OnDestroy {
-  showLoading = false;
-  showError = false;
   userResponseList: Array<SearchResponse>;
   private subscriptions: Subject<any> = new Subject<any>();
 
@@ -37,13 +35,6 @@ export class SearcherComponent implements OnInit, OnDestroy {
   }
 
   onSearch(searchRequest: SearchRequest): void {
-    this.showLoading = true;
-    this.userService.searchUsers(searchRequest).subscribe(() => {
-        this.showLoading = false;
-      },
-      () => {
-        this.showError = true;
-        this.showLoading = false;
-      });
+    this.userService.searchUsers(searchRequest).subscribe();
   }
 }

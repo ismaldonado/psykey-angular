@@ -16,30 +16,36 @@
 </mat-card>
 
 <form *ngIf="userTypeSelected" [formGroup]="userForm" (ngSubmit)="onCreate()">
-  <app-user-form formGroupName="user"
-                 [userType]="userTypeSelected"
-                 [therapistResponseList]="therapistResponseList"
-                 (checkedEvent)="onChecked($event)"
-                 (therapyTypeSelected)="onShowTherapistList($event)"></app-user-form>
-  <!--esto lo quiero entender-->
-  <!-- Esta comprobación doble la realizamos por si el usuario primero
-      pincha en paciente y pone el checkbox a true y luego pulsa en empleado,
-      de esta manera se comprueba que solo se pinte el componente si es paciente -->
-  <app-client-form formGroupName="client"
-                   *ngIf="userTypeSelected === 'patient' && checked">
+  <app-user-form
+    formGroupName="user"
+    [userType]="userTypeSelected"
+    [therapistResponseList]="therapistResponseList"
+    (checkedEvent)="onChecked($event)"
+    (therapyTypeSelected)="onShowTherapistList($event)"
+  ></app-user-form>
+  <app-client-form
+    formGroupName="client"
+    *ngIf="userTypeSelected === 'patient' && checked"
+  >
   </app-client-form>
   <div class="mt-4">
-    <button mat-raised-button
-            type="submit"
-            class="mx-2 accept"
-            [disabled]="!userForm.valid">
-            <mat-icon aria-hidden="false" >check</mat-icon>
-    </button>
-    <button mat-raised-button
-            type="button"
-            class="mx-2 cancel"
-            (click)="onCancel()">
-            <mat-icon aria-hidden="false" >clear</mat-icon>
-    </button>
+    <mat-card-actions>
+      <button
+        mat-raised-button
+        type="submit"
+        class="mx-2 accept"
+        [disabled]="!userForm.valid"
+      >
+        <mat-icon aria-hidden="false">check</mat-icon>
+      </button>
+      <button
+        mat-raised-button
+        type="button"
+        class="mx-2 cancel"
+        (click)="onCancel()"
+      >
+        <mat-icon aria-hidden="false">clear</mat-icon>
+      </button>
+    </mat-card-actions>
   </div>
 </form>

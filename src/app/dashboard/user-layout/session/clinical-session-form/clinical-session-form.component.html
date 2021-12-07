@@ -12,11 +12,7 @@
           </mat-form-field>
           <mat-form-field appearance="outline" class="mx-2 w-100">
             <mat-label>Fecha de sesión</mat-label>
-            <input [readonly]="true" matInput formControlName="date" [matDatepicker]="date"/>
-            <mat-datepicker-toggle [disabled]="true" matSuffix [for]="date">
-              <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
-            </mat-datepicker-toggle>
-            <mat-datepicker #date></mat-datepicker>
+            <input [readonly]="true" matInput formControlName="date">
           </mat-form-field>
         </div>
         <mat-form-field appearance="outline" class="mx-2 w-100">

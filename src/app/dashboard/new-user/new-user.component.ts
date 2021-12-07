@@ -125,7 +125,8 @@ export class NewUserComponent implements OnInit, OnDestroy {
           [Validators.required]
         ],
         therapyType: [
-          this.userToModify?.therapyType ? this.userToModify?.therapyType : ''
+          this.userToModify?.therapyType ? this.userToModify?.therapyType : '',
+          [Validators.required]
         ],
         therapist: [
           this.userToModify?.employeeId ? this.userToModify?.employeeId : ''
@@ -201,9 +202,7 @@ export class NewUserComponent implements OnInit, OnDestroy {
       postalCode: this.userForm.get('user.postalCode')?.value,
       birthdate: this.userForm.get('user.birthdate')?.value,
       userType: this.userTypeSelected,
-      therapyType: this.userForm.get('user.therapyType')?.value
-        ? this.userForm.get('user.therapyType')?.value
-        : null,
+      therapyType: this.userForm.get('user.therapyType')?.value,
       employeeId: this.userForm.get('user.therapist')?.value
         ? this.userForm.get('user.therapist')?.value
         : null,
@@ -226,10 +225,7 @@ export class NewUserComponent implements OnInit, OnDestroy {
       province: this.userForm.get('client.province')?.value,
       postalCode: this.userForm.get('client.postalCode')?.value,
       userType: 'client',
-      patientRelationship: this.userForm.get('client.patientRelationship')
-        ?.value
-        ? this.userForm.get('client.patientRelationship')?.value
-        : null
+      patientRelationship: this.userForm.get('client.patientRelationship')?.value
     };
   }
 

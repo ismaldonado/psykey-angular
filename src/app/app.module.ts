@@ -16,6 +16,7 @@ import { HttpErrorInterceptor } from './service/interceptor/http-error.intercept
 import { HttpRequestInterceptor } from './service/interceptor/http-request.interceptor';
 import { JwtModule } from '@auth0/angular-jwt';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
 
 export function tokenGetter(): any {
   return sessionStorage.getItem('authToken');
@@ -45,7 +46,8 @@ export function tokenGetter(): any {
   providers: [
     { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { floatLabel: 'always' } },
     { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: HttpRequestInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: HttpRequestInterceptor, multi: true },
+    { provide: MAT_DATE_LOCALE, useValue: 'es-ES' },
   ],
   bootstrap: [AppComponent]
 })

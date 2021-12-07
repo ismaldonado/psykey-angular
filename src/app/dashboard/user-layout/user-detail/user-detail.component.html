@@ -24,7 +24,7 @@
         <td *ngIf="userDetail.therapyType">{{ therapyTypeMap.get(userDetail.therapyType) }}</td>
         <td>{{ userDetail.name }}</td>
         <td>{{ userDetail.surname }}</td>
-        <td>{{ userDetail.birthdate | date: "dd MMM yy" }}</td>
+        <td>{{ userDetail.birthdate | date: "dd/MM/yyyy" }}</td>
         <td>{{ userDetail.dni }}</td>
       </tr>
       <tr>

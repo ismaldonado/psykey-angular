@@ -29,7 +29,6 @@ export class MedicineFormComponent implements OnInit {
   }
 
   private initForm(): void {
-    // TODO: Revisar obligatorios...
     this.medicineForm = this.form.group({
       name: [
         this.medicine?.name ? this.medicine.name : '',

@@ -1,10 +1,8 @@
 export const userTypeList = [
   { value: 'patient', description: 'Paciente' },
-  { value: 'employee', description: 'Empleado' },
-  { value: 'secretary', description: 'Administrativo' }
+  { value: 'employee', description: 'Empleado' }
 ];
 
 export const userTypeMap = new Map<string, string>()
   .set('patient', 'Paciente')
-  .set('employee', 'Empleado')
-  .set('secretary', 'Administrativo');
+  .set('employee', 'Empleado');

@@ -4,12 +4,13 @@ import { SessionStorageService } from '../storage/session-storage.service';
 import { Permission } from '../../model/permission';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
-
-  constructor(private readonly sessionStorageService: SessionStorageService,
-              private readonly jwtHelperService: JwtHelperService) { }
+  constructor(
+    private readonly sessionStorageService: SessionStorageService,
+    private readonly jwtHelperService: JwtHelperService
+  ) {}
 
   isAuthenticated(): boolean {
     const authToken: string = this.sessionStorageService.get('authToken');
@@ -18,14 +19,20 @@ export class AuthService {
   }
 
   hasRoutePermissions(path?: string): boolean {
-    const permissions: Array<Permission> = this.sessionStorageService.get('permissions');
+    const permissions: Array<Permission> =
+      this.sessionStorageService.get('permissions');
 
-    return path ? permissions.some((permission: Permission) => permission.sectionName === path) : false;
+    return path
+      ? permissions.some(
+          (permission: Permission) => permission.sectionName === path
+        )
+      : false;
   }
 
   hasPermissions(permission: string): boolean {
-    const permissions: Array<Permission> = this.sessionStorageService.get('permissions');
-
+    const permissions: Array<Permission> =
+      this.sessionStorageService.get('permissions');
+      
     return permissions.some((value: Permission) => value.name === permission);
   }
 }

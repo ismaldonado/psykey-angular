@@ -29,8 +29,7 @@ export class ReportFormComponent implements OnInit {
   private initForm(): void {
     this.reportForm = this.form.group({
       date: [
-        this.report?.date ? this.report.date : '',
-        [Validators.required],
+        this.report?.date ? this.report.date : new Date(), [Validators.required]
       ],
       description: [
         this.report?.description ? this.report.description : ''
