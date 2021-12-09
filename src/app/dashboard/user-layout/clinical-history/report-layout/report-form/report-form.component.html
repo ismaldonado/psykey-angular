@@ -8,8 +8,9 @@
     <mat-card-content>
       <div class="d-flex">
         <mat-form-field appearance="outline" class="mx-2 w-100">
-          <mat-label>Fecha de sesión</mat-label>
-          <input [readonly]="true" matInput formControlName="date" />
+          <mat-label>Fecha de creación</mat-label>
+          <input [readonly]="true" matInput [matDatepicker]="picker" formControlName="date">
+          <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
       </div>
       <mat-form-field class="width" appearance="outline">

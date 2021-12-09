@@ -39,8 +39,8 @@ export class ClinicalSessionFormComponent implements OnInit {
       ],
       date: [
         this.clinicalSessionToUpdate
-          ? this.transformDate(this.clinicalSessionToUpdate.date)
-          : this.transformDate(new Date()),
+          ? this.clinicalSessionToUpdate.date
+          : new Date(),
         [Validators.required],
       ],
       description: [
@@ -49,10 +49,6 @@ export class ClinicalSessionFormComponent implements OnInit {
           : '',
       ],
     });
-  }
-
-  private transformDate(date: Date): string {
-    return this.datePipe.transform(date, 'dd/MM/yyyy');
   }
 
   private buildClinicalSessionRR(): ClinicalSessionRR {
