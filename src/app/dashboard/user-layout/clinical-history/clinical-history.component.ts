@@ -52,7 +52,8 @@ export class ClinicalHistoryComponent {
           ...this.userDetail,
           clinicalHistoryResponse: {
             ...this.userDetail.clinicalHistoryResponse,
-            additionalInfoRR: clinicalHistory.additionalInfoRR
+            additionalInfoRR: clinicalHistory.additionalInfoRR,
+            id: clinicalHistory.id
           }
         };
         this.updateUserDetail.emit(userDetailUpdated);
@@ -126,12 +127,12 @@ export class ClinicalHistoryComponent {
   }
 
   saveReport(report: ReportRR): void {
-    const reporttRR: ReportRR = {
+    const reportRR: ReportRR = {
       ...report,
       clinicalHistoryId: this.clinicalHistoryResponse?.id
     };
     this.clinicalHistoryService
-      .saveReportRR(reporttRR)
+      .saveReportRR(reportRR)
       .subscribe((value: ReportRR) => {
         const userDetailUpdated: UserDetail = {
           ...this.userDetail,

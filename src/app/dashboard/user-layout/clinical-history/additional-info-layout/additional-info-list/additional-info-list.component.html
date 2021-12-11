@@ -6,15 +6,6 @@
         (closed)="panelOpenState = false"
       >
         <mat-expansion-panel-header>
-          <mat-panel-title> Información familiar </mat-panel-title>
-        </mat-expansion-panel-header>
-        <p class="w-100 text-justify">{{ additionalInfoRR.familyInfo }}</p>
-      </mat-expansion-panel>
-      <mat-expansion-panel
-        (opened)="panelOpenState = true"
-        (closed)="panelOpenState = false"
-      >
-        <mat-expansion-panel-header>
           <mat-panel-title> Información social </mat-panel-title>
         </mat-expansion-panel-header>
         <p class="w-100 text-justify">{{ additionalInfoRR.socialInfo }}</p>
@@ -27,6 +18,15 @@
           <mat-panel-title> Información laboral </mat-panel-title>
         </mat-expansion-panel-header>
         <p class="w-100 text-justify">{{ additionalInfoRR.employmentInfo }}</p>
+      </mat-expansion-panel>
+      <mat-expansion-panel
+        (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false"
+      >
+        <mat-expansion-panel-header>
+          <mat-panel-title> Información familiar </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p class="w-100 text-justify">{{ additionalInfoRR.familyInfo }}</p>
       </mat-expansion-panel>
     </mat-accordion>
   </mat-card-content>
